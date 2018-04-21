@@ -1,6 +1,6 @@
 """ Module for Cell classes and associated simple viewer/controllers """
 
-import copy
+import copy, logging
 
 class BaseCell(object):
   """ Parent class of all Cell classes 
@@ -18,12 +18,13 @@ class BaseCell(object):
       can be updated (via pypubsub message).   
   
   Usage:
-  >>> import Cell
-  >>> c1 = Cell.BaseCell('Cell 1')
-  >>> c2 = Cell.BaseCell('Cell 2')
-  >>> c3 = Cell.BaseCell('Cell 3')
+  >>> import cell
+  >>> c1 = cell.BaseCell('Cell 1')
+  >>> c2 = cell.BaseCell('Cell 2')
+  >>> c3 = cell.BaseCell('Cell 3')
   >>> [ c3.addNeighbor(c) for c in (c1,c2) ]
   >>> print c3
+  
   "Cell 3" is descended from None. Neighbors @: "Cell 1", "Cell 2",'
   >>> c4 = c1.nextGen('Cell 4')
   >>> print c4
@@ -39,6 +40,8 @@ class BaseCell(object):
     self.ancestor = None
     self.descendant = None
     self.generation = 0
+    logging.basicConfig(format = '%(asctime)s %(levelname)s:%(message)s', level = (logging.DEBUG))  
+ 
     
   def addNeighbor(self, cell):
     """ Append a new cell to the list of neighbors of this cell """

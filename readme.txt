@@ -1,7 +1,14 @@
 In progress
 ============
 
-- gameOfLifeApp is currently broken   
+cell.py / testCell.py
+======================
+
+improve comments
+add tests
+add logging
+
+
 
 
 Next-up
